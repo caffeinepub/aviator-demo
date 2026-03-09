@@ -1,0 +1,79 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-single-page-aviator-style-crash-game-demo-in-the-react-typescript-frontend-that-reproduces-the-provided-behavior-a-multiplier-starts-at-1-00x-increases-by-0-05-every-100ms-while-running-and-randomly-crashes-between-1-00x-and-6-00x-include-start-and-cash-out-controls-and-show-the-outcome-text-crashed-at-x-or-cashed-out-at-x",
+      "featureTitle": "Create a single-page Aviator-style crash game demo in the React + TypeScript frontend that reproduces the provided behavior: a multiplier starts at 1.00x, increases by 0.05 every 100ms while running, and randomly crashes between 1.00x and 6.00x; include Start and Cash Out controls and show the outcome text (“Crashed at …x” or “Cashed out at …x”).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/AviatorCrashDemo.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-cohesive-distinct-visual-theme-for-the-demo-colors-typography-and-layout-inspired-by-a-dark-night-sky-cockpit-style-apply-it-consistently-using-tailwind-avoid-blue-purple-as-primary-colors-while-keeping-the-core-ui-minimal-title-multiplier-controls-result",
+      "featureTitle": "Add a cohesive, distinct visual theme for the demo (colors, typography, and layout) inspired by a dark “night sky cockpit” style; apply it consistently using Tailwind (avoid blue/purple as primary colors) while keeping the core UI minimal (title, multiplier, controls, result).",
+      "files": [
+        "frontend/src/components/AviatorCrashDemo.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-generated-static-image-assets-for-the-game-ui-and-render-them-from-the-frontend-as-static-files-under-frontend-public-assets-generated-do-not-serve-images-from-the-backend",
+      "featureTitle": "Add generated static image assets for the game UI and render them from the frontend as static files under frontend/public/assets/generated (do not serve images from the backend).",
+      "files": [
+        "frontend/src/components/AviatorCrashDemo.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-provide-a-simple-link-to-access-it-via-clear-run-deploy-instructions-in-project-documentation-local-and-internet-computer-deployment-including-where-to-find-the-local-url-and-the-canister-url-after-deploy",
+      "featureTitle": "Provide a simple “link to access it” via clear run/deploy instructions in project documentation (local and Internet Computer deployment), including where to find the local URL and the canister URL after deploy.",
+      "files": [
+        "frontend/README.md"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

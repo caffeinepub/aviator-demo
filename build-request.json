@@ -1,0 +1,110 @@
+{
+  "kind": "build_request",
+  "title": "Simple Aviator-Style Crash Game Demo",
+  "projectName": "Aviator Demo",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a single-page Aviator-style crash game demo in the React + TypeScript frontend that reproduces the provided behavior: a multiplier starts at 1.00x, increases by 0.05 every 100ms while running, and randomly crashes between 1.00x and 6.00x; include Start and Cash Out controls and show the outcome text (“Crashed at …x” or “Cashed out at …x”).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "<!DOCTYPE html>\n<html>\n<head>\n    <title>Simple Aviator Demo</title>\n    <style>\n        body {\n            background: #0f172a;\n            color: white;\n            text-align: center;\n            font-family: Arial;\n        }\n        #multiplier {\n            font-size: 50px;\n            margin: 30px;\n            color: #00ff99;\n        }\n        button {\n            padding: 10px 20px;\n            font-size: 18px;\n            margin: 10px;\n            cursor: pointer;\n        }\n    </style>\n</head>\n<body>\n\n<h1>✈ Simple Aviator Game (Demo)</h1>\n\n<div id=\"multiplier\">1.00x</div>\n\n<button onclick=\"startGame()\">Start</button>\n<button onclick=\"cashOut()\">Cash Out</button>\n\n<p id=\"result\"></p>\n\n<script>\nlet multiplier = 1;\nlet interval;\nlet gameRunning = false;\nlet crashPoint = 0;\n\nfunction startGame() {\n    if (gameRunning) return;\n\n    multiplier = 1;\n    crashPoint = (Math.random() * 5 + 1).toFixed(2); // random crash 1x–6x\n    gameRunning = true;\n    document.getElementById(\"result\").innerText = \"\";\n\n    interval = setInterval(() => {\n        multiplier += 0.05;\n        document.getElementById(\"multiplier\").innerText = multiplier.toFixed(2) + \"x\";\n\n        if (multiplier >= crashPoint) {\n            clearInterval(interval);\n            gameRunning = false;\n            document.getElementById(\"result\").innerText = \"💥 Crashed at \" + crashPoint + \"x\";\n        }\n    }, 100);\n}\n\nfunction cashOut() {\n    if (!gameRunning) return;\n\n    clearInterval(interval);\n    gameRunning = false;\n    document.getElementById(\"result\").innerText = \"✅ Cashed out at \" + multiplier.toFixed(2) + \"x\";\n}\n</script>\n\n</body>\n</html>     game bana ka r link de den"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The UI shows a title “Simple Aviator Game (Demo)” and a multiplier display initialized at 1.00x.",
+        "Clicking Start begins the round; multiplier increases by 0.05 every 100ms and updates the display formatted to 2 decimals with an “x” suffix.",
+        "The game chooses a random crash point between 1.00x and 6.00x (inclusive range as implemented by 1 + Math.random()*5) and ends the round when multiplier reaches/exceeds it.",
+        "On crash, the UI displays exactly “Crashed at {crashPoint}x” (English text) with the crashPoint shown to 2 decimals.",
+        "Clicking Cash Out while running stops the round and displays exactly “Cashed out at {multiplier}x” with multiplier shown to 2 decimals.",
+        "Start cannot start a new round while a round is already running."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Add a cohesive, distinct visual theme for the demo (colors, typography, and layout) inspired by a dark “night sky cockpit” style; apply it consistently using Tailwind (avoid blue/purple as primary colors) while keeping the core UI minimal (title, multiplier, controls, result).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Simple Aviator Game (Demo)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The app has a consistent dark theme with a clear accent color that is not primarily blue or purple.",
+        "Typography, spacing, and button styles look intentional and consistent across the page.",
+        "The multiplier display is visually emphasized (larger size, accent color) similar in prominence to the provided HTML demo."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add generated static image assets for the game UI and render them from the frontend as static files under frontend/public/assets/generated (do not serve images from the backend).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "✈ Simple Aviator Game (Demo)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All required generated images exist under frontend/public/assets/generated.",
+        "The UI renders at least one of the generated images (e.g., in the header or as a subtle background element) without any backend image routing."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Provide a simple “link to access it” via clear run/deploy instructions in project documentation (local and Internet Computer deployment), including where to find the local URL and the canister URL after deploy.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "game bana ka r link de den"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Documentation includes local run instructions and explicitly states the local URL to open the app.",
+        "Documentation includes Internet Computer deployment steps (dfx deploy) and explains how to obtain/open the deployed frontend canister URL.",
+        "Instructions are written in English."
+      ]
+    }
+  ],
+  "constraints": [
+    "Use English for any user-facing text.",
+    "Frontend must be React + TypeScript with Tailwind and existing UI components composed (do not edit files under frontend/src/components/ui).",
+    "Backend must remain single-actor Motoko (no additional backend services).",
+    "Do not modify any immutable frontend hook files (frontend/src/hooks/useInternetIdentity.ts/.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx)."
+  ],
+  "nonGoals": [
+    "Real-money gambling, payments, or wagering logic.",
+    "Provably-fair RNG, cryptographic randomness, or anti-cheat guarantees.",
+    "User accounts, leaderboards, multiplayer, or persistent game history."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Minimal airplane silhouette icon, flat vector style, mint accent on dark background (aviator-plane-icon.dim_256x256.png)",
+      "Wide night-sky gradient background with subtle stars and a faint horizon glow (aviator-sky-bg.dim_1920x1080.png)"
+    ],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

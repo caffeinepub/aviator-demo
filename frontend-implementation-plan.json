@@ -1,0 +1,93 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Aviator Demo — Simple Aviator-Style Crash Game Demo (Frontend)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Implement a single-page Aviator-style crash game round loop with Start/Cash Out controls, multiplier tick, random crash point, and result text.",
+      "acceptanceCriteria": [
+        "The UI shows a title “Simple Aviator Game (Demo)” and a multiplier display initialized at 1.00x.",
+        "Clicking Start begins the round; multiplier increases by 0.05 every 100ms and updates the display formatted to 2 decimals with an “x” suffix.",
+        "The game chooses a random crash point between 1.00x and 6.00x (inclusive range as implemented by 1 + Math.random()*5) and ends the round when multiplier reaches/exceeds it.",
+        "On crash, the UI displays exactly “Crashed at {crashPoint}x” (English text) with the crashPoint shown to 2 decimals.",
+        "Clicking Cash Out while running stops the round and displays exactly “Cashed out at {multiplier}x” with multiplier shown to 2 decimals.",
+        "Start cannot start a new round while a round is already running."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/AviatorCrashDemo.tsx",
+          "operation": "create",
+          "description": "Create the main single-page game component implementing the round state machine (idle/running/crashed/cashed-out), 100ms timer tick (+0.05), random crash point (1 + Math.random()*5), and Start/Cash Out control logic. Use shadcn-ui components (e.g., Button/Card) for controls/layout to satisfy the existing UI components constraint; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Wire the AviatorCrashDemo component into the app as the only rendered page (single-page demo). Use shadcn-ui layout primitives if available to keep structure consistent; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Apply a cohesive dark “night sky cockpit” visual theme using Tailwind with a non-blue/non-purple primary accent while keeping the UI minimal.",
+      "acceptanceCriteria": [
+        "The app has a consistent dark theme with a clear accent color that is not primarily blue or purple.",
+        "Typography, spacing, and button styles look intentional and consistent across the page.",
+        "The multiplier display is visually emphasized (larger size, accent color) similar in prominence to the provided HTML demo."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Add Tailwind base/components/utilities and define theme CSS variables for a dark cockpit palette with a mint/green accent (avoid blue/purple as primary). Ensure consistent typography, spacing, and button focus/hover states using Tailwind-friendly tokens."
+        },
+        {
+          "path": "frontend/src/components/AviatorCrashDemo.tsx",
+          "operation": "modify",
+          "description": "Apply Tailwind classes for the dark cockpit layout: centered minimal stack (title, multiplier, controls, result), emphasized multiplier styling with mint accent, and consistent button styling (prefer shadcn-ui Button variants if available); verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add required generated static image assets under frontend/public/assets/generated and render at least one in the UI without any backend image routing.",
+      "acceptanceCriteria": [
+        "All required generated images exist under frontend/public/assets/generated.",
+        "The UI renders at least one of the generated images (e.g., in the header or as a subtle background element) without any backend image routing."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/aviator-plane-icon.dim_256x256.png",
+          "operation": "create",
+          "description": "Add generated image asset: Minimal airplane silhouette icon, flat vector style, mint accent on dark background."
+        },
+        {
+          "path": "frontend/public/assets/generated/aviator-sky-bg.dim_1920x1080.png",
+          "operation": "create",
+          "description": "Add generated image asset: Wide night-sky gradient background with subtle stars and a faint horizon glow."
+        },
+        {
+          "path": "frontend/src/components/AviatorCrashDemo.tsx",
+          "operation": "modify",
+          "description": "Render at least one generated image in the UI (e.g., show the airplane icon in the header and/or apply the sky background as a subtle page background) by referencing the static files at frontend/public/assets/generated/aviator-plane-icon.dim_256x256.png and/or frontend/public/assets/generated/aviator-sky-bg.dim_1920x1080.png."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Add English documentation with clear local and Internet Computer run/deploy instructions including where to find the local URL and deployed canister URL.",
+      "acceptanceCriteria": [
+        "Documentation includes local run instructions and explicitly states the local URL to open the app.",
+        "Documentation includes Internet Computer deployment steps (dfx deploy) and explains how to obtain/open the deployed frontend canister URL.",
+        "Instructions are written in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/README.md",
+          "operation": "create",
+          "description": "Write English project documentation covering: local setup/run steps, the local URL to open (e.g., the dev server URL), Internet Computer deployment steps (including running dfx deploy), and how to obtain/open the deployed frontend canister URL after deployment."
+        }
+      ]
+    }
+  ]
+}

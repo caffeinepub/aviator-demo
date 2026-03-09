@@ -1,0 +1,59 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-17T07:42:33.496Z",
+  "summary": "Core Aviator crash-game logic and themed UI were added, along with deployment documentation. However, some REQ-1 acceptance text requirements appear violated (title/result strings), and the required generated image assets are referenced but not evidenced as added under the required public assets path.",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "UI title must be exactly “Simple Aviator Game (Demo)” and outcome text must be exactly “Crashed at {crashPoint}x” or “Cashed out at {multiplier}x” (no extra characters), with values formatted to 2 decimals.",
+      "reason": "The implemented strings include extra emoji/formatting and do not match the exact required text. Title includes an airplane emoji and splits “(Demo)” into a separate span; results include emoji prefixes (💥/✅).",
+      "evidence": [
+        "frontend/src/components/AviatorCrashDemo.tsx"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "requirement": "Add the required generated static image assets under frontend/public/assets/generated (aviator-plane-icon.dim_256x256.png and aviator-sky-bg.dim_1920x1080.png).",
+      "reason": "The UI references these files via /assets/generated/... but the diff summary does not show any added files under frontend/public/assets/generated (no evidence the images were actually added to the repo).",
+      "evidence": [
+        "frontend/src/components/AviatorCrashDemo.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Internet Identity / authentication and react-query actor management scaffolding.",
+      "reason": "Not requested by any REQ; BuildRequest explicitly lists “User accounts” as a non-goal, yet authentication/identity hooks and actor query logic are included.",
+      "evidence": [
+        "frontend/src/hooks/useInternetIdentity.ts",
+        "frontend/src/hooks/useActor.ts",
+        "frontend/src/main.tsx"
+      ]
+    },
+    {
+      "description": "Use of lucide-react Plane icon (in addition to required generated image assets).",
+      "reason": "Not requested; REQ-3 specifically calls for generated static image assets rendered from frontend/public assets.",
+      "evidence": [
+        "frontend/src/components/AviatorCrashDemo.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.74,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/README.md",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/AviatorCrashDemo.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

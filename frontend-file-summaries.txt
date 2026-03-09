@@ -1,0 +1,7 @@
+{
+  "frontend/src/index.css": "Global styles with custom OKLCH dark theme using mint/emerald accent colors, Orbitron display font, and custom animations for the night sky cockpit aesthetic.",
+  "frontend/tailwind.config.js": "Tailwind configuration with Orbitron display font, custom glow shadows, and extended animations (pulse-glow, float) for the game UI.",
+  "frontend/src/App.tsx": "Root application component that renders the AviatorCrashDemo game with dark mode enabled.",
+  "frontend/src/components/AviatorCrashDemo.tsx": "Main game component implementing the Aviator crash game logic with multiplier ticking (0.05 every 100ms), random crash point (1-6x), Start/Cash Out controls, result display, and immersive UI with background images and animations.",
+  "frontend/README.md": "Complete project documentation with local development instructions (localhost:3000), Internet Computer deployment steps, and how to find deployed canister URLs."
+}

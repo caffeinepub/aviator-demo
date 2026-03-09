@@ -1,0 +1,16 @@
+{
+  "backend/main.mo": "Empty Motoko canister actor with no logic.",
+  "feature_evidence.json": "Feature evidence report mapping features to affected frontend files and components.",
+  "frontend-file-summaries.txt": "Text file containing prewritten summaries of key frontend files and their purposes.",
+  "frontend/index.css": "Tailwind base and variable definitions for the light theme using OKLCH colors.",
+  "frontend/index.html": "Basic HTML entry point loading the React app via main.tsx.",
+  "frontend/README.md": "Project documentation explaining the Aviator demo, local development, and ICP deployment steps.",
+  "frontend/src/App.tsx": "Root React component rendering the AviatorCrashDemo in dark mode.",
+  "frontend/src/components/AviatorCrashDemo.tsx": "Main crash‑game component handling multiplier ticks, crash logic, cash‑out, and themed UI rendering.",
+  "frontend/src/hooks/useActor.ts": "React hook that creates and manages a backend actor tied to Internet Identity changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Authentication context and hooks for managing Internet Identity login, logout, and stored identities.",
+  "frontend/src/index.css": "Tailwind styles and OKLCH dark theme variables plus Orbitron/Inter font imports for the frontend.",
+  "frontend/src/main.tsx": "Initializes the React app, wrapping it with React Query and an Internet Identity provider before rendering App.",
+  "frontend/tailwind.config.js": "Configures Tailwind with dark mode, plugin extensions, custom colors, fonts, animations, and layout settings.",
+  "project_state.json": "Stores the project’s metadata, feature definitions, requirements, and image needs for the Aviator demo."
+}
